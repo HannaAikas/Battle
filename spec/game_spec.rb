@@ -10,4 +10,13 @@ describe Game do
     expect(subject).to respond_to(:player_1)
   end
 
+  describe "#attack" do
+    let(:player){double("player")}
+
+    it "attack victim" do
+      expect(player).to receive(:player_hit)
+      subject.attack(player)
+    end
+  end
+
 end
