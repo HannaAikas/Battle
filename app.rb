@@ -1,5 +1,6 @@
 require 'sinatra/base'
 require 'player'
+require 'game'
 
 class Battle < Sinatra::Base
   # set :sessions, true
@@ -24,7 +25,8 @@ class Battle < Sinatra::Base
   get '/attack' do
     @player_1_name = $player_1.name
     @player_2_name = $player_2.name
-    $player_2.player_hit
+    @game = Game.new
+    @game.attack($player_2)
     erb :attack
   end
 
